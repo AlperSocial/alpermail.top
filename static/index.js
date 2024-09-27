@@ -3,14 +3,6 @@
 /**
  *  The Annoying Site
  *  https://theannoyingsite.com
- *
- *  Author:
- *    Feross Aboukhadijeh
- *    https://feross.org
- *
- *  Patreon:
- *    If you enjoyed this, please support me on Patreon!
- *    https://www.patreon.com/feross
  */
 
 const SCREEN_WIDTH = window.screen.availWidth
@@ -70,35 +62,34 @@ const SEARCHES = [
 ]
 
 const VIDEOS = [
-  'albundy.mp4',
-  'badger.mp4',
-  'cat.mp4',
-  'hasan.mp4',
-  'heman.mp4',
-  'jozin.mp4',
-  'nyan.mp4',
-  'rickroll.mp4',
-  'space.mp4',
-  'trolol.mp4'
+  '0fff2d366bb5d456c4498eb2d19b14ce.mp4',
+  '44b8634f718067accead50cbaf25b2f8.mp4',
+  '533cb2a66a486e30f43109e053998993.mp4',
+  '5e71514c91d41817ed66d985e8999b4a.mp4',
+  '82c38fb78ac739b486bd35b6e6a3f601.mp4',
+  'Vqq11zpEIG-n9UN2.mp4',
+  'lv_0_20240713172302.mp4',
+  'lv_0_20240813204521.mp4',
+  'youtube_AALQwjjk85Y_720x720_h264.mp4',
+  'trolol.mp4',
+  'nyan.mp4'
 ]
 
 const FILE_DOWNLOADS = [
-  'cat-blue-eyes.jpg',
-  'cat-ceiling.jpg',
-  'cat-crosseyes.jpg',
-  'cat-cute.jpg',
+  'Cat1_diff.png',
+  'Screenshot_20240724_142949_X.jpg',
+  'alpermail.png',
   'cat-hover.jpg',
-  'cat-marshmellows.jpg',
-  'cat-small-face.jpg',
-  'cat-smirk.jpg',
-  'patreon.png'
+  'eadb627b413ad99481d47dbaeb59cdb96853b7fb5708c2a187b60ef25dc42bc6.png',
+  'geometry-dash-lobotomy.gif',
+  'sponge.gif',
+  'spongebob_squid_game.jpg',
+  'togif.gif'
 ]
 
 const PHRASES = [
   'The wheels on the bus go round and round, round and round, round and round. The wheels on the bus go round and round, all through the town!',
   'Dibidi ba didi dou dou, Di ba didi dou, Didi didldildidldidl houdihoudi dey dou',
-  'I like fuzzy kittycats, warm eyes, and pretending household appliances have feelings',
-  'I\'ve never seen the inside of my own mouth because it scares me to death.',
   'hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw hee haw',
   'abcdefghijklmnopqrstuvwxyz abcdefghijklmnopqrstuvwxyz',
   'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak',
