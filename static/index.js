@@ -1171,9 +1171,6 @@ function detectBrowser () {
 
 /* my own mods*/
 
-window.onload = function() {
-    let elements = document.querySelectorAll('header, main, footer, .logout-message');
-    elements.forEach(el => {
-        el.style.display = 'none';
-    });
-};
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('hide-all');
+});
