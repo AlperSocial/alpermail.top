@@ -1,11 +1,6 @@
 <!doctype html>
+<html lang="en">
 
-<!--
-  The Annoying Site
-  https://theannoyingsite.com
--->
-
-<html>
 <head>
   <meta charset='UTF-8'>
   <meta name='theme-color' content='#fff' class='theme-color'/>
@@ -16,79 +11,210 @@
 	<meta name="twitter:title" content="AlperMail">
 	<meta name="twitter:description" content="Your best choice for an email service!">
 	<meta content="/cdn/fella.png" property="og:image" />
-  <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #2a2c2d;
-    color: #fff;
-    text-align: center;
-      overflow: hidden;
-    }
-    .hello-message {
-      margin: 40px;
-      text-align: center;
-    }
-    .logout-messages {
-      pointer-events: none;
-      color: red;
-      margin: 40px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      text-shadow: 2px 2px #FFF, 4px 4px 10px #000;
-    }
-    img {
-      width: 300px;
-    }
-    @keyframes blurslowly {
-      0% {
-        filter: none;
-      }
-      92% {
-        filter: blur(0);
-      }
-      96% {
-        filter: blur(1px);
-      }
-      100% {
-        filter: blur(0);
-      }
-    }
-    body {
-      animation-name: blurslowly;
-      animation-iteration-count: infinite;
-      animation-duration: 15s;
-      animation-play-state: running;
-    }
-  </style>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        /* Fake buttons at the top-right corner */
+        .fake-buttons {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        .fake-buttons button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .fake-buttons button:hover {
+            background-color: #218838;
+        }
+
+        main {
+            text-align: center;
+            margin: 2em;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 1em;
+            margin-bottom: 1.5em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .success {
+            color: #0a0;
+        }
+
+        .error {
+            color: #a00;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 2em auto;
+            max-width: 600px;
+        }
+
+        li {
+            margin-bottom: 1em;
+            padding: 1em;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout-message {
+            text-align: center;
+            margin-top: 20px;
+            color: red;
+        }
+
+        .signup-prompt {
+            margin-top: 1em;
+            font-size: 0.9em;
+        }
+
+        .signup-prompt a {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .signup-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            form,
+            ul {
+                width: 90%;
+            }
+        }
+    </style>
 </head>
+
 <body>
+    <header>
+        <img src='static/alpermail.png' alt='logo' />
+        <h1>Welcome to AlperMail</h1>
+        <p>Your best choice for an email service</p>
 
-<template>
-  <div class='hello-message'>
-    <h1>Welcome to AlperMail!</h1>
-    <h2>Click anywhere to get started.</h2>
+        <div class="fake-buttons">
+            <button>Help</button>
+            <button>Settings</button>
+        </div>
+    </header>
 
-    <img src='static/alpermail.png' alt='logo' />
-  </div>
-  <div class='logout-messages'></div>
-</template>
+    <main>
+        <form action="#" method="POST">
+            <h2>Sign In</h2>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Sign In">
 
-<script src='static/index.js'></script>
+            <div class="signup-prompt">
+                Don't have an account? <a href="#">Sign up</a>
+            </div>
+        </form>
 
-<script async src='https://www.googletagmanager.com/gtag/js?id=UA-3898076-24'></script>
-<script>
-  window.dataLayer = window.dataLayer || []
-  function gtag () {
-    window.dataLayer.push(arguments)
-  }
-  gtag('js', new Date())
-  gtag('config', 'UA-3898076-24')
-</script>
+        <!-- Sample inbox preview -->
+        <h2>Recent Emails</h2>
+        <ul>
+            <li>
+                <strong>Subject:</strong> Welcome to AlperMail! <br>
+                <strong>From:</strong> support@alpermail.top <br>
+                <small>2 hours ago</small>
+            </li>
+            <li>
+                <strong>Subject:</strong> Your Account is Now Active <br>
+                <strong>From:</strong> no-reply@alpermail.top <br>
+                <small>1 day ago</small>
+            </li>
+            <li>
+                <strong>Subject:</strong> Password Reset Request <br>
+                <strong>From:</strong> security@alpermail.top <br>
+                <small>3 days ago</small>
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AlperMail - Your Best Email Service</p>
+    </footer>
+
+    <div class="logout-message">
+        <p>You have been logged out. Please sign in again.</p>
+    </div>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-3898076-24');
+    </script>
 
 </body>
+
 </html>
