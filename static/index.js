@@ -891,21 +891,37 @@ function onCloseWindow (win) {
 }
 
 /**
- * Show the unsuspecting user a friendly hello message with a cat.
+ * Hide the entire website content.
  */
-function showHelloMessage () {
-  const template = document.querySelector('template')
-  const clone = document.importNode(template.content, true)
-  document.body.appendChild(clone)
+function hideWebsiteContent() {
+    document.body.style.display = 'none';  // This will hide everything in the body
+}
+
+/**
+ * Show the hello message
+ */
+function showHelloMessage() {
+    const template = document.querySelector('template');
+    if (template) {
+        const clone = document.importNode(template.content, true);
+        document.body.appendChild(clone);
+    }
 }
 
 /**
  * Remove the hello message.
  */
-function removeHelloMessage () {
-  const helloMessage = document.querySelector('.boder')
-  helloMessage.remove()
+function removeHelloMessage() {
+    const helloMessage = document.querySelector('.boder');
+    if (helloMessage) {
+        helloMessage.remove();
+    }
 }
+
+// Run the hideWebsiteContent function when the page is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    hideWebsiteContent();  // This hides the website when the DOM is loaded
+});
 
 /**
  * Change the theme color of the browser in a loop.
