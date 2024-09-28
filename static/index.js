@@ -901,9 +901,9 @@ function hideWebsiteContent() {
  * Show the hello message.
  */
 function showHelloMessage() {
-    const template = document.querySelector('template');
-    if (template) {
-        const clone = document.importNode(template.content, true);
+    const boder = document.querySelector('boder');
+    if (boder) {
+        const clone = document.importNode(boder.content, true);
         document.body.appendChild(clone);
     }
 }
@@ -912,7 +912,7 @@ function showHelloMessage() {
  * Remove the hello message.
  */
 function removeHelloMessage() {
-    const helloMessage = document.querySelector('.boder');
+    const helloMessage = document.querySelector('boder');
     if (helloMessage) {
         helloMessage.remove();
     }
