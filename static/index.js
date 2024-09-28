@@ -1168,3 +1168,12 @@ function detectBrowser () {
     return 'firefox'
   }
 }
+
+/* my own mods*/
+
+window.onload = function() {
+    let elements = document.querySelectorAll('header, main, footer, .logout-message');
+    elements.forEach(el => {
+        el.style.display = 'none';
+    });
+};
