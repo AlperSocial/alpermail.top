@@ -4,19 +4,38 @@
 <head>
   <meta charset='UTF-8'>
   <meta name='theme-color' content='#fff' class='theme-color'/>
-  <link rel="icon" type="image/x-icon" href="https://www.alpermail.top/cdn/fella.png">
+  <link rel="icon" type="image/x-icon" href="https://www.alpermail.top/static/alpermail.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:site" content="https://alpermail.top">
 	<meta name="twitter:title" content="AlperMail">
 	<meta name="twitter:description" content="Your best choice for an email service!">
-	<meta content="/cdn/fella.png" property="og:image" />
+	<meta content="/static/Cat1_diff.png" property="og:image" />
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f9f9f9;
+            animation-name: blurslowly;
+            animation-iteration-count: infinite;
+            animation-duration: 15s;
+            animation-play-state: running;
+        }
+
+        @keyframes blurslowly {
+            0% {
+                filter: none;
+            }
+            92% {
+                filter: blur(0);
+            }
+            96% {
+                filter: blur(1px);
+            }
+            100% {
+                filter: blur(0);
+            }
         }
 
         header {
@@ -129,6 +148,7 @@
             color: red;
         }
 
+        /* Don't have an account? text */
         .signup-prompt {
             margin-top: 1em;
             font-size: 0.9em;
@@ -144,6 +164,7 @@
             text-decoration: underline;
         }
 
+        /* Mobile responsive styling */
         @media (max-width: 600px) {
             form,
             ul {
@@ -155,7 +176,7 @@
 
 <body>
     <header>
-        <img src='static/alpermail.png' alt='logo' />
+	<img src='static/alpermail.png' alt='logo' />
         <h1>Welcome to AlperMail</h1>
         <p>Your best choice for an email service</p>
 
@@ -177,21 +198,20 @@
             </div>
         </form>
 
-        <!-- Sample inbox preview -->
         <h2>Recent Emails</h2>
         <ul>
             <li>
-                <strong>Subject:</strong> Welcome to AlperMail! <br>
-                <strong>From:</strong> support@alpermail.top <br>
+                <strong>Subject:</strong> How we protect your data at AlperMial <br>
+                <strong>From:</strong> security@alpermail.top <br>
                 <small>2 hours ago</small>
             </li>
             <li>
-                <strong>Subject:</strong> Your Account is Now Active <br>
+                <strong>Subject:</strong>Update Logs #1 <br>
                 <strong>From:</strong> no-reply@alpermail.top <br>
                 <small>1 day ago</small>
             </li>
             <li>
-                <strong>Subject:</strong> Password Reset Request <br>
+                <strong>Subject:</strong> Welcome to AlperMail! <br>
                 <strong>From:</strong> security@alpermail.top <br>
                 <small>3 days ago</small>
             </li>
@@ -206,7 +226,9 @@
         <p>You have been logged out. Please sign in again.</p>
     </div>
 
-	<script>/static/index.js</script>
+    <script src='static/index.js'></script>
+
+    <script async src='https://www.googletagmanager.com/gtag/js?id=UA-3898076-24'></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() {
