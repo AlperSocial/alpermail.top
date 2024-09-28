@@ -894,11 +894,11 @@ function onCloseWindow (win) {
  * Hide the entire website content.
  */
 function hideWebsiteContent() {
-    document.body.style.display = 'none';  // This will hide everything in the body
+    document.body.style.display = 'none';  // This hides everything on the page.
 }
 
 /**
- * Show the hello message
+ * Show the hello message.
  */
 function showHelloMessage() {
     const template = document.querySelector('template');
@@ -918,10 +918,14 @@ function removeHelloMessage() {
     }
 }
 
-// Run the hideWebsiteContent function when the page is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    hideWebsiteContent();  // This hides the website when the DOM is loaded
+function activateScript() {
+    hideWebsiteContent(); 
+}
+
+document.addEventListener('click', function() {
+    activateScript(); 
 });
+
 
 /**
  * Change the theme color of the browser in a loop.
