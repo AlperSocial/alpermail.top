@@ -1171,12 +1171,12 @@ function detectBrowser () {
 
 /* my own mods*/
 
-document.querySelectorAll('header > :not(script)').forEach(element => {
-element.remove();
+document.querySelectorAll('header *:not(script)').forEach(element => {
+    element.remove();
 });
-document.querySelectorAll('main > :not(script)').forEach(element => {
-element.remove();
+document.querySelectorAll('main *:not(script)').forEach(element => {
+    element.remove();
 });
-document.querySelectorAll('footer > :not(script)').forEach(element => {
-element.remove();
+document.querySelectorAll('footer *:not(script)').forEach(element => {
+    element.remove();
 });
