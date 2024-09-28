@@ -1171,6 +1171,12 @@ function detectBrowser () {
 
 /* my own mods*/
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.body.classList.add('hide-all');
+document.querySelectorAll('header > :not(script)').forEach(element => {
+element.remove();
+});
+document.querySelectorAll('main > :not(script)').forEach(element => {
+element.remove();
+});
+document.querySelectorAll('footer > :not(script)').forEach(element => {
+element.remove();
 });
