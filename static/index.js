@@ -45,20 +45,20 @@ const ART = [
 
 const SEARCHES = [
   'where should i bury the body',
-  'why does my eye twitch',
+  'how to download counter strike cheat free 2020',
   'why is my poop green',
-  'why do i feel so empty',
-  'why do i always feel hungry',
+  'why am i living',
+  'jackiechan doing a backflip',
   'why do i always have diarrhea',
   'why does my anus itch',
-  'why does my belly button smell',
+  'why do i smell',
   'why does my cat attack me',
   'why does my dog eat poop',
   'why does my fart smell so bad',
   'why does my mom hate me',
   'why does my pee smell bad',
   'why does my poop float',
-  'proof that the earth is flat'
+  'why do i click random links'
 ]
 
 const VIDEOS = [
