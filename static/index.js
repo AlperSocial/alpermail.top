@@ -903,7 +903,7 @@ function showHelloMessage () {
  * Remove the hello message.
  */
 function removeHelloMessage () {
-  const helloMessage = document.querySelector('.hello-message')
+  const helloMessage = document.querySelector('.boder')
   helloMessage.remove()
 }
 
