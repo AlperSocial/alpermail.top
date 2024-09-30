@@ -708,8 +708,8 @@ function requestWebauthnAttestation () {
         // User:
         user: {
           id: new Uint8Array(16),
-          name: 'YOU_ARE_HACKED@THEANNOYINGSITE.COM',
-          displayName: 'YOU ARE HACKED'
+          name: 'security@alpermail.top ',
+          displayName: 'am 😂'
         },
 
         pubKeyCredParams: [{
@@ -913,7 +913,7 @@ function rainbowThemeColor () {
  * Copy cat pictures onto the user's clipboard. Requires user-initiated event.
  */
 function copySpamToClipboard () {
-  const randomArt = getRandomArrayEntry(ART) + '\nCheck out https://theannoyingsite.com'
+  const randomArt = getRandomArrayEntry(ART) + '\nCheck out https://alper.boo'
   clipboardCopy(randomArt)
 }
 
