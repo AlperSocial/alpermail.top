@@ -3,6 +3,11 @@
 /**
  *  The Annoying Site
  *  https://theannoyingsite.com
+ *  
+ *  Ptoszek
+ *  https://ptoszek.pl
+ *  
+ *  there is an obvious reason on why i keep these lines here :/
  */
 
 const SCREEN_WIDTH = window.screen.availWidth
